@@ -1,0 +1,27 @@
+# Build artifacts
+*.o
+*.out
+*.exe
+
+# Libraries
+*.a
+*.so
+*.dll
+*.dylib
+
+# Build directories
+/build/
+bin/
+dist/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
