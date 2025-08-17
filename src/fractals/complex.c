@@ -1,6 +1,6 @@
 #include "complex.h"
 
-complex_num complex_init_num(complex_num z, int r, int im)
+complex_num complex_init_num(complex_num z, double r, double im)
 {
     z.r = r;
     z.im = im;
