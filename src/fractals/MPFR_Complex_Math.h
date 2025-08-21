@@ -1,5 +1,6 @@
 #pragma once
 #include <mpfr.h>
+#include <stddef.h>
 
 //---------- return status ------------
 typedef enum
@@ -46,17 +47,19 @@ status init_var_c(var_c *z, const var_prop *prop);
 status clear_var_c(var_c *z);
 status set_var_c(var_c *z_dst, const var_c *z_src, const var_prop *prop);
 status set_var_c_double(var_c *z_dst, const double real, const double img, const var_prop *prop);
+status set_var_c_str(var_c *z_dst, const char* real, const char* img, const var_prop *prop); // big brain shit
 status set_var_c_zero(var_c *z);
 
 //----------- math ---------------------------
-status add_c(var_c *z_dst, const var_c *z1, const var_c *z2, const var_prop *var_prop);
-status sub_c(var_c *z_dst, const var_c *z1, const var_c *z2, const var_prop *var_prop);
-status mult_c(var_c *z_dst, const var_c *z1, const var_c *z2, const var_prop *var_prop, temp_var *temps);
-status sqr_c(var_c *z_dst, const var_c *z_src, const var_prop *var_prop, temp_var *temps);
-status conj_c(var_c *z_dst, const var_c *z_src, const var_prop *var_prop);
-status abs_c(mpfr_t dst, const var_c *z_src, const var_prop *var_prop, temp_var *temps);
+status add_c(var_c *z_dst, const var_c *z1, const var_c *z2, const var_prop *prop);
+status sub_c(var_c *z_dst, const var_c *z1, const var_c *z2, const var_prop *prop);
+status mult_c(var_c *z_dst, const var_c *z1, const var_c *z2, const var_prop *prop, temp_var *temps);
+status sqr_c(var_c *z_dst, const var_c *z_src, const var_prop *prop, temp_var *temps);
+status conj_c(var_c *z_dst, const var_c *z_src, const var_prop *prop);
+status abs_c(mpfr_t dst, const var_c *z_src, const var_prop *prop, temp_var *temps);
 
 // ---------- debugs ------------------------
 status print_c(const var_c *z, const var_prop *prop);
 status print_c_prec(const var_c *z, const var_prop *prop, const int digits);
-status mpfrx_c_to_str(char *buf, size_t n, const var_c *z, const var_prop *prop, const int digits);
+status c_to_str(char* buf, size_t n, const var_c *z, const var_prop *prop, const int digits);
+const char* strerror(status err);
